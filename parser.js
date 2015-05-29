@@ -3,7 +3,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 var validator = require('validator');
 var fs = require("fs");
-var Hashids = require("hashids");
+var md5 = require("crypto-js/md5");
 
 
 var app = express();
@@ -50,8 +50,7 @@ function parseSites() {
 
 function writeSiteInfoToLog(siteURL, words, urls) {
     const fileDirectory = './output/';
-    var hashids = new Hashids(siteURL);
-    var fileName = hashids.encode(siteURL);
+    var fileName = md5(siteURL);
 
     var file = fs.createWriteStream(fileDirectory + fileName + '.txt');
     file.on('error', function(err) {
