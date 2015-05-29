@@ -27,9 +27,8 @@ function parseSites() {
                 $('STYLE').remove(); // Remove style information. We want only presentable words.
                 $('SCRIPT').remove(); // Remove javascripts information. We want only presentable words.
                 var bodyText = $("body").text();
-
-                // Clear redundant whitespace from the sites text and move all words to lower case.
-                var content = bodyText.replace(/\s+/g, " ").toLowerCase();
+                var content = bodyText.toLowerCase(); // move all letters to lower case for matching.
+                content = content.replace(/\s+/g, " "); // Clear redundant whitespace from the sites text.
 
                 // Collect links from the site.
                 var urls = [];
