@@ -24,9 +24,11 @@ function parseSites() {
         request(siteURL, function (error, response, body) {
             if (!error) {
                 var $ = cheerio.load(body); // load the page into Cheerio.
+                $('STYLE').remove(); // Remove style information. We want only presentable words.
+                $('SCRIPT').remove(); // Remove javascripts information. We want only presentable words.
                 var bodyText = $("body").text();
 
-                // Clear redundant whitespace from the sites text.
+                // Clear redundant whitespace from the sites text and move all words to lower case.
                 var content = bodyText.replace(/\s+/g, " ").toLowerCase();
 
                 // Collect links from the site.
@@ -55,6 +57,7 @@ function writeSiteInfoToLog(siteURL, words, urls) {
     var file = fs.createWriteStream(fileDirectory + fileName + '.txt');
     file.on('error', function(err) {
         console.log("Failed to write the output file for site " + siteURL + "." + "Error: " + err + ".");
+        file.close();
     });
 
     file.once('open', function(fd) {
