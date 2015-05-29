@@ -38,12 +38,6 @@ function parseSites() {
                         // We collect only valid URLs in order to avoid self references and malformed URLs.
                         urls.push(url);
                     }
-
-                    //console.log(url);
-                    //url = url.replace("/url?q=", "").split("&")[0];
-                    //console.log(url);
-                    //console.log(validator.isURL(url));
-                    //console.log(validator.isURL(siteURL + url));
                 });
 
                 writeSiteInfoToLog(siteURL, content, urls);
