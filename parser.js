@@ -50,7 +50,7 @@ function parseSites() {
 
 function writeSiteInfoToLog(siteURL, words, urls) {
     const fileDirectory = './output/';
-    hashids = new Hashids(siteURL);
+    var hashids = new Hashids(siteURL);
     var fileName = hashids.encode(siteURL);
 
     var file = fs.createWriteStream(fileDirectory + fileName + '.txt');
