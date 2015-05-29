@@ -55,9 +55,10 @@ function writeSiteInfoToLog(siteURL, words, urls) {
 
     var file = fs.createWriteStream(fileDirectory + fileName + '.txt');
     file.on('error', function(err) {
-        console.log("Failed to write the output file for site " + siteURL + ".");
+        console.log("Failed to write the output file for site " + siteURL + "." + "Error: " + err + ".");
     });
 
+    // Write lines to the file with the site name as the first word.
     file.write(siteURL +  " " + words + '\n'); // Write the words that were extracted from the site.
 
     // Write the URLs extracted from the site.
