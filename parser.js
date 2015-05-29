@@ -57,13 +57,15 @@ function writeSiteInfoToLog(siteURL, words, urls) {
         console.log("Failed to write the output file for site " + siteURL + "." + "Error: " + err + ".");
     });
 
-    // Write lines to the file with the site name as the first word.
-    file.write(siteURL +  " " + words + '\n'); // Write the words that were extracted from the site.
+    file.once('open', function(fd) {
+        // Write lines to the file with the site name as the first word.
+        file.write(siteURL +  " " + words + '\n'); // Write the words that were extracted from the site.
 
-    // Write the URLs extracted from the site.
-    urls.forEach(function(url) {
-        file.write(siteURL +  " " + url + '\n');
+        // Write the URLs extracted from the site.
+        urls.forEach(function(url) {
+            file.write(siteURL +  " " + url + '\n');
+        });
+
+        file.end();
     });
-
-    file.end();
 }
