@@ -18,7 +18,7 @@ var server = app.listen(3000, function () {
 });
 
 function parseSites() {
-    var sites = ['http://www.cnn.com', 'http://www.nytimes.com', 'http://www.iht.com'];
+    var sites = ['http://www.cnn.com', 'http://www.nytimes.com', 'http://www.iht.com', 'http://espn.go.com', 'http://recode.net'];
 
     sites.forEach(function(siteURL) {
         request(siteURL, function (error, response, body) {
