@@ -51,8 +51,24 @@ function parseSites(sitesPath, outputFolderPath) {
                     var content = bodyText.toLowerCase(); // move all letters to lower case for matching.
                     content = content.replace(/\s+/g, " "); // Clear redundant whitespace from the sites text.
 
-                    // Collect links from the site.
+                    // Go over all the words extract urls and clear redundant characters.
+                    // We do not do it on all the content to keep the URLs intact.
                     var urls = [];
+                    var words = content.split(" ");
+                    var validWords = [];
+                    words.forEach(function(word) {
+                        if (validator.isURL(word)) {
+                            urls.push(word);
+                        } else {
+                            word = word.replace(/[^a-zA-Z ]/g, ""); // Keep only english letters for words.
+                            validWords.push(word);
+                        }
+                    });
+
+                    content = validWords.join(" "); // Recreate the content with valid words.
+                    content = content.replace(/\s+/g, " "); // Clear redundant whitespace from the sites content.
+
+                    // Collect links from the site.
                     var links = $("a"); // get all hyperlinks
                     $(links).each(function(i, link) {
                         var url = $(link).attr("href");
