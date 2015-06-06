@@ -17,7 +17,6 @@ var request = require('request');
 var cheerio = require('cheerio');
 var validator = require('validator');
 var fs = require("fs");
-
 var md5 = require("crypto-js/md5");
 var argv = require('minimist')(process.argv.slice(2));
 
