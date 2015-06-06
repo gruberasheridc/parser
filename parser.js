@@ -22,7 +22,6 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var siteListPath = argv["i"];
 var outputFolderPath = argv["o"];
-
 if (!siteListPath || !outputFolderPath) {
     console.log("Input params must include: -o OUTPUT_FOLDER -i INPUT_SITE_FILE_PATH");
     return;
