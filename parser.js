@@ -6,7 +6,8 @@
         2. The first word of each line is the web site that is associated with the file (owner site).
         3. All the other words in the line are words collected from the owner site.
 
-    Execution example: node parser.js -o /output/ -i /input/sites.txt
+    Execution format: node parser.js -o OUTPUT_FOLDER -i INPUT_SITE_FILE_PATH
+    Example: node parser.js -o /output/ -i /input/sites.txt
     The -o parameter is used for specifying the output folder.
     The -i parameter is used for specifying the site list input file path.
     The sites list input file should contain a list of URLs delimited by comma (e.g. http://espn.go.com,http://recode.net).
