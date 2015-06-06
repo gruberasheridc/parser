@@ -27,7 +27,7 @@ if (!siteListPath || !outputFolderPath) {
     return;
 }
 
-// Parse the give sites and output to the given folder sites.
+// Parse the given sites and output logs to the given output folder.
 parseSites(siteListPath, outputFolderPath);
 
 function parseSites(sitesPath, outputFolderPath) {
