@@ -1,3 +1,17 @@
+/*
+    The parser works as a command line utility that scraps the given list of websites and outputs log files.
+    The log files are written in a format that is ready for the Hadoop Map Reduce Inverted Index job.
+    The log format is as follows:
+        1. The log contains lines with words delimited by space.
+        2. The first word of each line is the web site that is associated with the file (owner site).
+        3. All the other words in the line are words collected from the owner site.
+
+    Execution example: node parser.js -o /output/ -i /input/sites.txt
+    The -o parameter is used for specifying the output folder.
+    The -i parameter is used for specifying the site list input file path.
+    The sites list input file should contain a list of URLs delimited by comma (e.g. http://espn.go.com,http://recode.net).
+ */
+
 var request = require('request');
 var cheerio = require('cheerio');
 var validator = require('validator');
